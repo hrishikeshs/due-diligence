@@ -30,10 +30,13 @@ jobs:
         run: |
           echo "Building JS & CSS assets..."
           cd client/due-diligence-web
-          CI=true yarn test yarn build
+          CI=true yarn install
+          CI=true yarn build
+
       # Runs a set of commands using the runners shell
       - name: Run frontend tests
         run: |
           echo "Running tests...",
           cd client/due-diligence-web
+          CI=true yarn install
           CI=true yarn test.
