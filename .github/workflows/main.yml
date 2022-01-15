@@ -39,4 +39,4 @@ jobs:
           echo "Running tests...",
           cd client/due-diligence-web
           CI=true yarn install
-          CI=true yarn test.
+          CI=true yarn test
