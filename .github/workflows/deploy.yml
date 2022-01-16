@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: ['10.x','12.x']
+        node-version: ['10.x']
         appname: ['due-diligence']
         deploy-group: ['staging']
         s3-bucket: ['due-diligence-deployments']
@@ -24,12 +24,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-
-      - name: Build js & css assets using webpack.
-        run: |
-          cd client/due-diligence-web
-          CI=true yarn install
-          CI=true yarn build
 
       # Install AWS CLI 2
       - name: Install AWS CLI 2
