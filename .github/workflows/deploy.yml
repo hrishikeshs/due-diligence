@@ -32,7 +32,7 @@ jobs:
           unzip awscliv2.zip
           sudo ./aws/install --update
 
-      # Configure AWS credentials
+      # Step 1
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -49,3 +49,13 @@ jobs:
           --ignore-hidden-files \
           --s3-location s3://${{ matrix.s3-bucket }}/${{ matrix.s3-filename }}.zip \
           --source .
+
+      # Step 2
+      - name: Create CodeDeploy Deployment
+        id: deploy
+        run: |
+          aws deploy create-deployment \
+            --application-name application-name \
+            --deployment-group-name AppDeploymentGroupName \
+            --deployment-config-name CodeDeployDefault.OneAtATime \
+            --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
