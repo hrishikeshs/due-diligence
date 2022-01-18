@@ -8,7 +8,7 @@ cd client/due-diligence-web
 sudo curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n
 sudo /usr/bin/bash n lts
 
-npm install -g n
+sudo npm install -g n
 
 # make cache folder (if missing) and take ownership
 sudo mkdir -p /usr/local/n
@@ -23,9 +23,7 @@ sudo chown -R $(whoami) /usr/local/bin /usr/local/lib /usr/local/include /usr/lo
 # Install the correct version of node.
 n 12.12.0
 
-# Now node and npm are available
-npm install -g n
-npm install -g yarn
+sudo npm install -g yarn
 yarn install
 CI=true yarn build
 cd /var/www/sites-available/due-diligence/
