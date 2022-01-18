@@ -8,6 +8,8 @@ cd client/due-diligence-web
 sudo curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n
 sudo /usr/bin/bash n lts
 
+npm install -g n
+
 # make cache folder (if missing) and take ownership
 sudo mkdir -p /usr/local/n
 sudo chown -R $(whoami) /usr/local/n
