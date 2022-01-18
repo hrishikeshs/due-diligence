@@ -7,14 +7,12 @@ cd client/due-diligence-web
 curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n
 bash n lts
 
-# Now node and npm are available
-npm install -g n
-
 # Install the correct version of node.
 n 12.12.0
 
+# Now node and npm are available
+npm install -g n
 npm install -g yarn
-
 yarn install
 CI=true yarn build
 cd /var/www/sites-available/due-diligence/
