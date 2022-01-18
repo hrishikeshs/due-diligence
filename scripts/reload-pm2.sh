@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 cd /var/www/sites-available/due-diligence
 mkdir dist
@@ -6,7 +6,7 @@ cd client/due-diligence-web
 
 #install node js
 sudo curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n
-sudo bash n lts
+sudo /usr/bin/bash n lts
 
 # make cache folder (if missing) and take ownership
 sudo mkdir -p /usr/local/n
