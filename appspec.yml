@@ -4,6 +4,10 @@ files:
   - source: /
     destination: /var/www/sites-available/due-diligence
 hooks:
+  BeforeInstall:
+    - location: scripts/delete-existing-deployment.sh
+      timeout: 1800
+      runas: root
   ApplicationStart:
     - location: scripts/reload-pm2.sh
       timeout: 3000
