@@ -3,6 +3,7 @@ cd /var/www/sites-available/due-diligence
 mkdir dist
 cd client/due-diligence-web
 npm install -g yarn
+yarn install
 CI=true yarn build
 cd /var/www/sites-available/due-diligence/
 cp -r client/due-diligence-web/build dist
