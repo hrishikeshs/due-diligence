@@ -19,7 +19,7 @@ sudo cd /var/www/sites-available/due-diligence/
 sudo cp -r client/due-diligence-web/build dist
 
 sudo cd /var/www/sites-available/due-diligence/server
-sudo yarn install
+sudo npm install
 
 sudo cd /var/www/sites-available/due-diligence
 
