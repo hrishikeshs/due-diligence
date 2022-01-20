@@ -23,6 +23,4 @@ sudo cp -r client/due-diligence-web/build dist
 sudo cd /var/www/sites-available/due-diligence/server
 sudo npm install
 
-sudo cd /var/www/sites-available/due-diligence
-
-sudo pm2 startOrReload server/ecosystem.config.js
+sudo node app.js
