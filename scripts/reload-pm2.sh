@@ -11,10 +11,12 @@ sudo npm install -g yarn
 
 sudo cd /var/www/sites-available/due-diligence/client
 
-sudo yarn install
-CI=true sudo yarn build
+sudo /usr/local/bin/yarn install
+CI=true sudo /usr/local/bin/yarn build
 
 sudo cd /var/www/sites-available/due-diligence/
+
+sudo mkdir dist
 
 sudo cp -r client/due-diligence-web/build dist
 
