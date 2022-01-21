@@ -21,6 +21,6 @@ sudo cp -r client/due-diligence-web/build .
 
 sudo cd /var/www/sites-available/due-diligence/server
 
-sudo npm install
+sudo npm install --force
 
 sudo node app.js
