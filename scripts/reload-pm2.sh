@@ -1,25 +1,27 @@
 #!/bin/bash
 
-DIR="$( cd "$( dirname "$0" )" && pwd )"
+cd $(dirname $0)
 
 #install node js
 curl -sL https://rpm.nodesource.com/setup_16.x |  -E bash -
 
 yum install -y nodejs
 
+npm install -g yarn
+
 export PATH="/usr/bin/node:$PATH"
 
-cd $DIR/client/due-diligence-web
-
-npm install -g yarn
+cd client/due-diligence-web
 
 /usr/local/bin/yarn install
 
 CI=true /usr/local/bin/yarn build
 
-cp -r $DIR/client/due-diligence-web/build .
+cd ../../
 
-cd $DIR/server
+cp -r client/due-diligence-web/build .
+
+cd server
 
 npm install --force
 
