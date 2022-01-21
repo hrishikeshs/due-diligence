@@ -1,8 +1,6 @@
 #!/bin/bash
 
 sudo cd /var/www/sites-available/due-diligence
-sudo mkdir dist
-sudo cd client/due-diligence-web
 
 #install node js
 sudo dnf module install nodejs:12
