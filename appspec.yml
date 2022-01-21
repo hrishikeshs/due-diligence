@@ -8,7 +8,7 @@ hooks:
     - location: scripts/delete-existing-deployment.sh
       timeout: 1800
       runas: root
-  ApplicationStart:
+  AfterInstall:
     - location: scripts/reload-pm2.sh
       timeout: 3000
       runas: root
