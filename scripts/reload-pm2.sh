@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd $(dirname $0)
-
 #install node js
 curl -sL https://rpm.nodesource.com/setup_16.x |  -E bash -
 
@@ -11,18 +9,8 @@ npm install -g yarn
 
 export PATH="/usr/bin/node:$PATH"
 
-cd client/due-diligence-web
+cd /var/www/sites-available/due-diligence
 
-/usr/local/bin/yarn install
+sudo chmod +x ./scripts/after-install.sh
 
-CI=true /usr/local/bin/yarn build
-
-cd ../../
-
-cp -r client/due-diligence-web/build .
-
-cd server
-
-npm install --force
-
-node app.js
+sudo ./scripts/after-install.sh
