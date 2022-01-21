@@ -3,7 +3,7 @@
 sudo cd /var/www/sites-available/due-diligence/client/due-diligence-web
 
 #install node js
-sudo dnf module install nodejs:12
+sudo dnf module install nodejs:15
 
 sudo npm install -g yarn
 
