@@ -13,4 +13,6 @@ cd /var/www/sites-available/due-diligence
 
 sudo chmod +x ./scripts/after-install.sh
 
-sudo ./scripts/after-install.sh
+sudo ./scripts/after-install.sh | tee
+
+exit 0;
