@@ -3,7 +3,11 @@
 sudo cd /var/www/sites-available/due-diligence/client/due-diligence-web
 
 #install node js
-sudo dnf module install nodejs:15
+curl -sL https://rpm.nodesource.com/setup_16.x | sudo -E bash -
+
+sudo yum install -y nodejs
+
+export PATH="/usr/bin/node:$PATH"
 
 sudo npm install -g yarn
 
