@@ -13,8 +13,6 @@ cd /var/www/sites-available/due-diligence
 
 exec >>/var/log/after-install.log 2>&1
 
-cp -r client/due-diligence-web/build .
-
 cd server
 
 npm install --force

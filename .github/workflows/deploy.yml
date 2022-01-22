@@ -29,7 +29,7 @@ jobs:
         with:
           name: dist
           path: |
-            client/due-diligence-web/build
+            build/
             ./appspec.yml
             scripts/
             server/**
@@ -76,7 +76,7 @@ jobs:
         with:
           name: dist
           path: ~/download/dist
-          
+
       # Step 3
       - name: AWS Deploy push
         run: |
