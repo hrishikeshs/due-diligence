@@ -95,4 +95,5 @@ jobs:
             --application-name due-diligence \
             --deployment-group-name due-diligence-deployment-group \
             --deployment-config-name CodeDeployDefault.OneAtATime \
-            --s3-location s3://${{ matrix.s3-bucket }}/${{ matrix.s3-filename }}.zip
+            --file-exists-behavior OVERWRITE \
+            --s3-location bucket=${{ matrix.s3-bucket }},key=${{ matrix.s3-filename }}.zip,bundleType=zip
