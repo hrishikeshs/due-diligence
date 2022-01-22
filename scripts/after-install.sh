@@ -14,4 +14,4 @@ cd server
 
 npm install --force
 
-node app.js
+node app.js &
