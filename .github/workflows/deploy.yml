@@ -29,7 +29,7 @@ jobs:
         with:
           name: build
           path: |
-            build
+            client/due-diligence-web/build
             ./appspec.yml
             scripts/
             server/**
