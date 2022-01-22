@@ -71,10 +71,10 @@ jobs:
       # Step 2
       - name: Download
         uses: actions/download-artifact@master
-        path: |
-            build
-            server/
-
+        with:
+          name: artifact
+          path: ~/download/
+          
       # Step 3
       - name: AWS Deploy push
         run: |
