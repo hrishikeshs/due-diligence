@@ -5,12 +5,40 @@ on:
     types: [published]
 
 jobs:
-  deploy:
-    name: CD Pipeline
+  build:
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: ['10.x']
+        node-version: ['16.x']
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Build js & css assets using webpack.
+        run: |
+          cd client/due-diligence-web
+          CI=true yarn install
+          CI=true yarn build
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: build
+          path: |
+            build
+            server/**
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['16.x']
         appname: ['due-diligence']
         deploy-group: ['staging']
         s3-bucket: ['due-diligence-deployments']
@@ -40,7 +68,15 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      # Deploy push to AWS S3
+      # Step 2
+      - name: Download
+        uses: actions/checkout@master
+        uses: actions/download-artifact@master
+        path: |
+            build
+            server/
+
+      # Step 3
       - name: AWS Deploy push
         run: |
           aws deploy push \
@@ -48,9 +84,9 @@ jobs:
           --description "This is a revision for the ${{ matrix.appname }}-${{ github.sha }}" \
           --ignore-hidden-files \
           --s3-location s3://${{ matrix.s3-bucket }}/${{ matrix.s3-filename }}.zip \
-          --source .
+          --source ${{steps.download.outputs.download-path}} ./
 
-      # Step 2
+      # Step 4
       - name: Create CodeDeploy Deployment
         id: deploy
         run: |
