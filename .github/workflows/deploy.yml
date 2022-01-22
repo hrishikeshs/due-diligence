@@ -85,7 +85,7 @@ jobs:
           --description "This is a revision for the ${{ matrix.appname }}-${{ github.sha }}" \
           --ignore-hidden-files \
           --s3-location s3://${{ matrix.s3-bucket }}/${{ matrix.s3-filename }}.zip \
-          --source ~/download/build
+          --source ${{steps.download.outputs.download-path}} ./
 
       # Step 4
       - name: Create CodeDeploy Deployment
