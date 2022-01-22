@@ -30,6 +30,8 @@ jobs:
           name: build
           path: |
             build
+            ./appspec.yml
+            scripts/
             server/**
 
   deploy:
@@ -73,7 +75,7 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: build
-          path: ~/download/
+          path: ~/download/build
           
       # Step 3
       - name: AWS Deploy push
@@ -83,7 +85,7 @@ jobs:
           --description "This is a revision for the ${{ matrix.appname }}-${{ github.sha }}" \
           --ignore-hidden-files \
           --s3-location s3://${{ matrix.s3-bucket }}/${{ matrix.s3-filename }}.zip \
-          --source ${{steps.download.outputs.download-path}} ./
+          --source ~/download/build
 
       # Step 4
       - name: Create CodeDeploy Deployment
