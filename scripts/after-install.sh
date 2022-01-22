@@ -1,6 +1,6 @@
 #!/bin/bash
 
-exec >/var/log/after-install.log 2>&1
+exec >>/var/log/after-install.log 2>&1
 
 cd client/due-diligence-web
 
