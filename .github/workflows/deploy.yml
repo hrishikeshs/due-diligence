@@ -70,7 +70,6 @@ jobs:
 
       # Step 2
       - name: Download
-        uses: actions/checkout@master
         uses: actions/download-artifact@master
         path: |
             build
