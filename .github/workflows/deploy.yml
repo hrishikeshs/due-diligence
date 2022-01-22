@@ -72,7 +72,7 @@ jobs:
       - name: Download
         uses: actions/download-artifact@master
         with:
-          name: artifact
+          name: build
           path: ~/download/
           
       # Step 3
